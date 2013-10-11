@@ -5,3 +5,15 @@
 
 adjWidth = function()
   options(width=system('tput cols', intern=T))
+
+napply = function(l, f){
+  result = lapply(names(l), function(name) f(l[[name]], name=name))
+  names(result) = names(l)
+  result
+}
+
+nnapply = function(n, f){
+  result = lapply(n, f)
+  names(result) = n
+  result
+}
