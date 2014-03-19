@@ -17,3 +17,13 @@ nnapply = function(n, f){
   names(result) = n
   result
 }
+
+rowApply = function(object, f_apply, ...)
+  return(lapply(1:nrow(object), function(row) f_apply(object[row,], ...)))
+
+mcrowApply = function(object, f_apply, ...)
+  return(mclapply(1:nrow(object), function(row) f_apply(object[row,], ...)))
+
+rowMapply = function(f_apply, object, ...)
+  rbindlist(mapply(f_apply, lapply(1:nrow(object), function(row) object[row,]), ...,
+                   SIMPLIFY=F))
