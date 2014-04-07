@@ -27,3 +27,8 @@ mcrowApply = function(object, f_apply, ...)
 rowMapply = function(f_apply, object, ...)
   rbindlist(mapply(f_apply, lapply(1:nrow(object), function(row) object[row,]), ...,
                    SIMPLIFY=F))
+
+toKey = function(x) {
+    x = as.list(x)
+    return(paste(sapply(x[sort(names(x))], as.character),collapse='.'))
+}
