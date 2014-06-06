@@ -1,7 +1,7 @@
 ##! @todo seach workspace for environment references
 ##  that may trigger large save files
 .object_sizes = function()
-  sort(sapply(ls(all.names=T), function(x)object.size(get(x))))
+  sort(sapply(ls(all.names=T, envir=.GlobalEnv), function(x)object.size(get(x, envir=.GlobalEnv))))
 
 adjWidth = function(){
   if(interactive())
