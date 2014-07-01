@@ -14,8 +14,11 @@ napply = function(l, f){
   result
 }
 
-nnapply = function(n, f){
-  result = lapply(n, f)
+nnapply = function(n, f, mc=F){
+  if(mc)
+    result = mclapply(n, f)
+  else
+    result = lapply(n, f)
   names(result) = n
   result
 }
