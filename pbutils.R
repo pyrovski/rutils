@@ -8,20 +8,20 @@ adjWidth = function(){
     options(width=system('tput cols', intern=T))
 }
 
-napply = function(l, f, mc=F){
+napply = function(l, f, ..., mc=F){
   if(mc)
-    result = mclapply(names(l), function(name) f(l[[name]], name=name))
+    result = mclapply(names(l), function(name) f(l[[name]], name=name, ...))
   else
-    result = lapply(names(l), function(name) f(l[[name]], name=name))
+    result = lapply(names(l), function(name) f(l[[name]], name=name, ...))
   names(result) = names(l)
   result
 }
 
-nnapply = function(n, f, mc=F){
+nnapply = function(n, f, ..., mc=F){
   if(mc)
-    result = mclapply(n, f)
+    result = mclapply(n, f, ...)
   else
-    result = lapply(n, f)
+    result = lapply(n, f, ...)
   names(result) = n
   result
 }
