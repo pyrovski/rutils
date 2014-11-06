@@ -40,3 +40,8 @@ toKey = function(x) {
     x = as.list(x)
     return(paste(sapply(x[sort(names(x))], as.character),collapse='.'))
 }
+
+## work around bug in rbindlist
+.rbindlist = function(...){
+  data.table::copy(rbindlist(...))
+}
