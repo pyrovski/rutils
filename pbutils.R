@@ -1,3 +1,6 @@
+require(parallel)
+require(data.table)
+
 ##! @todo seach workspace for environment references
 ##  that may trigger large save files
 .object_sizes = function()
