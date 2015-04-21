@@ -45,3 +45,15 @@ toKey = function(x) {
 .rbindlist = function(...){
   data.table::copy(rbindlist(...))
 }
+
+Curry <- function(FUN,...) {
+  .orig = list(...);
+  function(...) do.call(FUN,c(.orig,list(...)))
+}
+
+Compose <- function(...) {
+  fs <- list(...)
+  function(...) Reduce(function(x, f) f(x),
+                       fs,
+                       ...)
+}
